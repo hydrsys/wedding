@@ -91,20 +91,40 @@
         .section-title { font-family: 'Cinzel', serif; margin-bottom: 70px; font-size: 1rem; letter-spacing: 4px; text-transform: lowercase; opacity: 0.7; }
 
         /* --- ESPRIT --- */
-        .esprit-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-            width: 95%;
+        .esprit-section {
+            width: 100vw;           /* 100% de la largeur de la fenêtre */
+            margin-left: calc(-50vw + 50%); /* Astuce pour centrer si le parent a des marges */
+            margin-right: calc(-50vw + 50%);
+            overflow: hidden;
         }
 
+        .esprit-grid {
+            display: grid;   
+            grid-template-columns: 1fr 2fr 1fr; 
+            gap: 10px;              /* Espace très fin pour un look moderne */
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .box {
+            border: 1px solid #2c4a63;
+            min-height: 600px;      /* Très haute pour un impact maximal */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            font-size: 1.3em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         /* Style spécifique pour la boîte qui contient l'image */
         .box-moodboard {
-            padding: 0 !important;      /* On enlève le padding pour que l'image touche les bords */
-            overflow: hidden;           /* On coupe ce qui dépasse */
+            padding: 0 !important; 
+            overflow: hidden;       
             display: flex;
-            border: none !important;    /* On enlève la bordure si tu veux un look propre */
+            border: none !important; 
             cursor: pointer;
         }
 
@@ -152,7 +172,12 @@
 
         footer { padding: 100px 20px; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.4; text-align: center; text-transform: uppercase; }
 
-        @media (max-width: 768px) { nav a { margin: 0 8px; font-size: 0.75rem; } }
+        @media (max-width: 900px) {
+            .esprit-grid {
+                grid-template-columns: 1fr; /* On repasse en colonne sur petit écran */
+            }
+            .box { min-height: 400px; }
+        }
     </style>
 </head>
 <body>
@@ -174,16 +199,22 @@
         <h3 style="font-family: 'Playfair Display'; font-weight: 400; font-style: italic; font-size: 1.8rem;">L'Esprit du Mariage</h3>
         <p style="max-width: 600px; margin: 20px auto 60px; font-weight: 300;">Un mélange de lin brut, d'oliviers séculaires et de douceur italienne.</p>
 
-    <div class="esprit-grid">
-        <div class="box"><strong>exemple homme</strong></div>
+        <div class="esprit-section">
+            <div class="esprit-grid">
+                <div class="box">
+                    <strong>exemple homme</strong>
+                </div>
+    
+                <div class="box box-moodboard">
+                    <a href="images/moodboard.jpg.png" download style="display:block; width:100%; height:100%;">
+                        <img src="images/moodboard.jpg.png" alt="Moodboard Dolce Vita">
+                    </a>
+                </div>
 
-        <div class="box" style="padding: 0; overflow: hidden; border: none; background-color: var(--beige-carte);">
-            <a href="images/moodboard.jpg" download style="display: block; width: 100%; height: 100%;">
-                <img src="images/moodboard.jpg" 
-                     alt="moodboard" 
-                     style="width: 100%; height: 100%; object-fit: cover; display: block;"
-                     title="Cliquez pour télécharger">
-            </a>
+                <div class="box">
+                    <strong>exemple femme</strong>
+                </div>
+            </div>
         </div>
 
     <div class="box"><strong>exemple femme</strong></div>

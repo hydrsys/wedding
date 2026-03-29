@@ -4,146 +4,236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benoit & Alexandra | Mariage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display:ital,wght@0,400;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display:ital@0;1&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
             --olive: #6b705c;
-            --beige-fond: #f9f6f1;
-            --beige-carte: #f1e9db;
+            --beige-site: #f8f1e6; /* Le nouveau fond beige clair */
+            --beige-carte: #f1e9db; /* Le ton lin pour les reliefs */
             --terracotta: #b07d62;
-            --bleu-nuit: #2c3e50;
+            --text: #333;
+            --text-on-sky: rgba(255, 255, 255, 0.9); /* Texte blanchi pour le contraste sur le ciel */
         }
 
-        html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Lato', sans-serif; color: var(--bleu-nuit); background-color: white; }
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            color: var(--text);
+            background-color: var(--beige-site); /* Application du fond beige */
+            line-height: 1.6;
+        }
 
-        /* --- NAVIGATION --- */
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation dynamique qui apparaît au scroll up */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9); /* Fond léger pour la lisibilité */
-            padding: 25px 0;
+            background: rgba(248, 241, 230, 0.95); /* Fond beige-site semi-transparent */
+            padding: 20px 0;
             text-align: center;
             z-index: 1000;
             transition: transform 0.4s ease-in-out;
             transform: translateY(0); 
         }
         
-        /* Classe pour cacher le menu quand on descend */
-        nav.nav-hidden { transform: translateY(-100%); }
+        nav.nav-hidden {
+            transform: translateY(-100%);
+        }
 
         nav a { 
             text-decoration: none; 
-            color: var(--bleu-nuit); 
+            color: var(--text); 
             text-transform: lowercase; 
-            font-size: 0.85rem; 
+            font-size: 0.9rem; 
             margin: 0 20px;
-            letter-spacing: 2px;
-            font-weight: 300;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
         }
 
-        /* --- ACCUEIL --- */
-        #accueil {
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Section Accueil avec image de fond */
+        .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.03), rgba(0,0,0,0.03)), 
-                        url('images/imageaccueil.png') center/cover no-repeat;
+            background-image: url('images/imagesaccueil.png');
+            background-size: cover;
+            /* MODIFICATION : aligne l'image en bas pour laisser le ciel au titre */
+            background-position: center bottom;
+            background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            color: var(--text-on-sky);
         }
-        #accueil h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 8vw, 4rem); margin: 0; letter-spacing: 5px; }
-        #accueil p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-top: 15px; opacity: 0.8; }
 
-        /* --- SECTIONS --- */
-        .section-container { padding: 120px 20px; text-align: center; max-width: 1100px; margin: auto; }
-        .section-title { font-family: 'Cinzel', serif; margin-bottom: 70px; font-size: 1rem; letter-spacing: 4px; text-transform: lowercase; }
+        .hero h1 {
+            font-size: clamp(2.5rem, 9vw, 4.5rem);
+            margin-bottom: 0px;
+            letter-spacing: 6px;
+            /* MODIFICATION : Déplace le titre vers le haut dans le ciel */
+            transform: translateY(-15vh); 
+        }
 
-        /* --- ESPRIT --- */
+        .hero p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Sections standard (sans séparations) */
+        .section-container {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            margin-bottom: 60px;
+            color: var(--terracotta);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Section Esprit avec 3 colonnes */
         .esprit-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 30px;
             margin-bottom: 50px;
         }
-        /* Style minimaliste pour les cadres d'exemples */
-        .box { border: 1px solid #e0e0e0; padding: 50px 20px; min-height: 200px; display: flex; flex-direction: column; justify-content: center; }
         
-        .full-width-photo { width: 100%; margin-top: 50px; }
-        .full-width-photo img { width: 100%; height: auto; display: block; }
+        .box {
+            padding: 40px 20px;
+            background: #fff; /* Fond blanc pour les blocs de contenu */
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 2px;
+        }
 
-        .disclaimer { font-style: italic; margin: 50px 0; color: var(--terracotta); font-size: 0.95rem; font-family: 'Playfair Display'; }
+        .full-width-box {
+            max-width: 1000px;
+            margin: auto;
+            border: 1px solid #eaeaea;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 300;
+        }
+        
+        .disclaimer {
+            font-style: italic;
+            margin: 40px 0;
+            color: #b07d62;
+            font-size: 0.9rem;
+        }
 
-        /* --- LISTE --- */
-        .card-donation { background-color: var(--beige-fond); padding: 80px 40px; }
+        /* Section Liste (Carte donation) */
+        .card-donation {
+            background-color: var(--beige-carte);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            border-radius: 4px;
+        }
+        
         .btn-don {
             display: inline-block;
             background-color: var(--terracotta);
             color: white;
             padding: 18px 45px;
             text-decoration: none;
-            margin: 30px 0;
+            border-radius: 30px;
+            margin: 25px 0;
+            transition: 0.3s;
             text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            transition: background 0.3s;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
         }
-        .btn-don:hover { background-color: var(--olive); }
+        
+        .btn-don:hover {
+            opacity: 0.8;
+        }
 
-        /* --- PRÉSENCE --- */
-        .link-form { text-decoration: none; color: var(--bleu-nuit); font-size: 1.4rem; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--bleu-nuit); padding-bottom: 3px; transition: opacity 0.3s; }
-        .link-form:hover { opacity: 0.6; }
+        /* Section Présence */
+        .link-form {
+            text-decoration: none;
+            color: var(--terracotta);
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--terracotta);
+            padding-bottom: 2px;
+            font-family: 'Playfair Display', serif;
+        }
 
-        footer { padding: 100px 20px; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.4; text-align: center; text-transform: uppercase; }
-
-        @media (max-width: 768px) { nav a { margin: 0 8px; font-size: 0.75rem; } }
+        footer {
+            padding: 80px 20px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            text-align: center;
+            color: #888;
+        }
     </style>
 </head>
 <body>
 
     <nav id="navbar">
-        <a href="#accueil">Accueil</a>
-        <a href="#esprit">L'esprit</a>
-        <a href="#liste">Liste de mariage</a>
-        <a href="#presence">Présence</a>
+        <a href="#accueil">accueil</a>
+        <a href="#esprit">l'esprit</a>
+        <a href="#liste">liste de mariage</a>
+        <a href="#presence">présence</a>
     </nav>
 
-    <section id="accueil">
+    <section id="accueil" class="hero">
         <h1>BENOIT & ALEXANDRA</h1>
-        <p>Notre Dolce Vita sous les oliviers</p>
+        <p>text de présentation pour notre mariage</p>
     </section>
 
     <section id="esprit" class="section-container">
         <div class="section-title">l'esprit</div>
-        <h3 style="font-family: 'Playfair Display'; font-weight: 400; font-style: italic; font-size: 1.8rem;">L'Esprit du Mariage</h3>
-        <p style="max-width: 600px; margin: 20px auto 60px; font-weight: 300;">Un mélange de lin brut, d'oliviers séculaires et de douceur italienne.</p>
+        <h3>L'Esprit du Mariage</h3>
+        <p>Un mélange de lin brut, d'oliviers séculaires et de douceur italienne.</p>
 
         <div class="esprit-grid">
-            <div class="box"><strong>Exemple Homme</strong></div>
-            <div class="box" style="background-color: var(--beige-carte); border: none;"><strong>Moodboard</strong><br><small>Couleurs autorisées</small></div>
-            <div class="box"><strong>Exemple Femme</strong></div>
+            <div class="box">exemple homme</div>
+            <div class="box" style="background-color: #f1e9db; border: none;">moodboard couleur autorisé</div>
+            <div class="box">exemple femme</div>
         </div>
 
-        <p class="disclaimer">"Blanc autorisé uniquement pour la mariée, si vous en portez... vous connaissez la suite !"</p>
+        <p class="disclaimer">blanc autorisé uniquement pour la marié, blanc vu mariage dans le cul</p>
 
-        <div class="full-width-photo">
-            <img src="votre-moodboard.jpg" alt="Esprit Toscane">
+        <div class="full-width-box">
+            photo pour le mood board
         </div>
     </section>
 
     <section id="liste" class="section-container">
         <div class="section-title">liste de mariage</div>
         <div class="card-donation">
-            <h2 style="font-family: 'Cinzel'; font-weight: 400; letter-spacing: 5px; margin-bottom: 30px;">UN PETIT GESTE</h2>
-            <p style="max-width: 600px; margin: 0 auto;">Votre présence est le plus beau des cadeaux. Comme nous sommes déjà bien installés dans notre petit cocon, nous n'avons pas de liste de mariage traditionnelle.</p>
-            <p style="margin-top: 20px;">Si vous souhaitez nous aider pour notre <strong>voyage de noces</strong> :</p>
+            <h2 style="font-family: 'Cinzel'; font-weight: 400; color: #b07d62;">UN PETIT GESTE</h2>
+            <p>Votre présence est le plus beau des cadeaux. Comme nous sommes déjà bien installés dans notre nid douillet, nous n'avons pas de liste de mariage traditionnelle.</p>
+            <p>Si vous souhaitez toutefois nous aider à réaliser notre rêve de <strong>voyage de noces</strong>, une urne sera disponible le jour J, ou vous pouvez contribuer via le lien ci-dessous :</p>
             
-            <a href="VOTRE_LIEN_CAGNOTTE" class="btn-don">Contribuer au voyage</a>
+            <a href="VOTRE_LIEN_CAGNOTTE" class="btn-don">Contribuer à notre Voyage</a>
             
-            <p style="font-size: 0.8rem; margin-top: 40px; line-height: 2; font-family: 'Lato'; letter-spacing: 1px;">
+            <p style="font-size: 0.8rem; margin-top: 20px; font-family: 'Lato';">
                 IBAN: FR76 1234 5678 9012 3456 7890 123<br>
                 Code BIC: ABCDEFGH
             </p>
@@ -152,14 +242,13 @@
 
     <section id="presence" class="section-container">
         <div class="section-title">présence</div>
-        <div style="padding: 40px 0;">
-            <p style="margin-bottom: 40px;">Merci de nous confirmer votre venue avant le XX/XX/XXXXX :</p>
-            <a href="VOTRE_LIEN_GOOGLE_FORM" class="link-form">Répondre au Google Form</a>
+        <div style="padding: 100px 0;">
+            <a href="VOTRE_LIEN_GOOGLE_FORM" class="link-form">liens vers un google form</a>
         </div>
     </section>
 
     <footer>
-        Benoit & Alexandra • 2026
+        Fait avec amour pour notre mariage • 2026
     </footer>
 
     <script>
@@ -169,16 +258,11 @@
         window.addEventListener("scroll", function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Si on est tout en haut (moins de 50px du top), on montre le menu
-            if (scrollTop < 50) {
-                navbar.classList.remove("nav-hidden");
-            } 
-            // Si on descend, on cache le menu
-            else if (scrollTop > lastScrollTop) {
+            if (scrollTop > lastScrollTop) {
+                // On descend, cache la barre de navigation
                 navbar.classList.add("nav-hidden");
-            } 
-            // Si on remonte, on montre le menu
-            else {
+            } else {
+                // On remonte, montre la barre de navigation
                 navbar.classList.remove("nav-hidden");
             }
             

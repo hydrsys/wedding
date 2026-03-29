@@ -117,6 +117,15 @@
             justify-content: flex-end;
         }
 
+        .esprit-box-aspect-ratio {
+            position: relative;
+            width: 100%;
+            /* Technique du 'padding-top' pour le ratio d'aspect */
+            padding-top: 100%; /* 100% de la largeur = Carré parfait */
+            border: 1px solid #e6e0d4; /* Bordure très fine */
+            overflow: hidden;
+        }
+
         .esprit-box img {
             width: 100%;
             height: 100%;
@@ -232,15 +241,15 @@
     <section class="esprit-section">
         <div class="esprit-trio">
             <div class="esprit-box">
-                <img src="images/homme.jpg" alt="Exemple Homme">
+                <img src="images/hommes.jpg" alt="Exemple Homme">
                 <span>Exemple Homme</span>
             </div>
             <div class="esprit-box moodboard-couleur">
-                <img src="images/couleurs.png" alt="Couleurs autorisées">
+                <img src="images/couleur.png" alt="Couleurs autorisées">
                 <span>Couleurs autorisées</span>
             </div>
             <div class="esprit-box">
-                <img src="images/femme.jpg" alt="Exemple Femme">
+                <img src="images/femmes.jpg" alt="Exemple Femme">
                 <span>Exemple Femme</span>
             </div>
         </div>

@@ -75,6 +75,17 @@
             text-shadow: 0px 2px 12px rgba(0,0,0,0.15);
         }
 
+        .hero p {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem; /* Taille réduite */
+            color: var(--olive); /* Couleur olive définie dans vos variables */
+            margin-top: 5px; /* Rapproche la phrase du titre */
+            letter-spacing: 1px;
+            opacity: 0.9;
+            transform: translateY(-22vh); /* Aligné avec le décalage de votre titre */
+            text-shadow: none; /* On retire l'ombre pour garder la couleur olive pure */
+        }
+
         /* --- SECTIONS --- */
         .section-container { padding: 120px 20px; text-align: center; max-width: 1100px; margin: auto; }
         .section-title { font-family: 'Cinzel', serif; margin-bottom: 70px; font-size: 1rem; letter-spacing: 4px; text-transform: lowercase; opacity: 0.7; }
@@ -131,7 +142,7 @@
 
     <section id="accueil" class="hero">
         <h1>ALEXANDRA & BENOIT</h1>
-        <h2>Notre Dolce Vita sous les oliviers</h2>
+        <p>Notre Dolce Vita sous les oliviers</p>
     </section>
 
     <section id="esprit" class="section-container">

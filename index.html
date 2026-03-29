@@ -15,38 +15,39 @@
         }
 
         html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Lato', sans-serif; color: var(--bleu-nuit); background-color: white; overflow-x: hidden; }
+        body { margin: 0; font-family: 'Lato', sans-serif; color: var(--bleu-nuit); background-color: white; }
 
-        /* --- NAVIGATION DYNAMIQUE --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.9); /* Fond léger pour la lisibilité */
+            padding: 25px 0;
             text-align: center;
             z-index: 1000;
             transition: transform 0.4s ease-in-out;
-            transform: translateY(-100%); /* Caché par défaut */
+            transform: translateY(0); 
         }
         
-        /* Classe ajoutée par le JavaScript quand on remonte */
-        nav.nav-visible { transform: translateY(0); }
+        /* Classe pour cacher le menu quand on descend */
+        nav.nav-hidden { transform: translateY(-100%); }
 
         nav a { 
             text-decoration: none; 
             color: var(--bleu-nuit); 
             text-transform: lowercase; 
-            font-size: 0.9rem; 
+            font-size: 0.85rem; 
             margin: 0 20px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            font-weight: 300;
         }
 
-        /* --- SECTION ACCUEIL --- */
+        /* --- ACCUEIL --- */
         #accueil {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), 
+            background: linear-gradient(rgba(0,0,0,0.03), rgba(0,0,0,0.03)), 
                         url('votre-photo-de-prez.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
@@ -54,91 +55,95 @@
             align-items: center;
             text-align: center;
         }
-        #accueil h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 8vw, 4rem); margin: 0; }
-        #accueil p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-top: 10px; }
+        #accueil h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 8vw, 4rem); margin: 0; letter-spacing: 5px; }
+        #accueil p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-top: 15px; opacity: 0.8; }
 
-        /* --- SECTIONS (SANS BARRES) --- */
-        .section-container { padding: 100px 20px; text-align: center; max-width: 1200px; margin: auto; }
-        .section-title { font-family: 'Cinzel', serif; margin-bottom: 60px; font-size: 1.2rem; letter-spacing: 3px; opacity: 0.7; }
+        /* --- SECTIONS --- */
+        .section-container { padding: 120px 20px; text-align: center; max-width: 1100px; margin: auto; }
+        .section-title { font-family: 'Cinzel', serif; margin-bottom: 70px; font-size: 1rem; letter-spacing: 4px; text-transform: lowercase; }
 
-        /* --- SECTION ESPRIT --- */
+        /* --- ESPRIT --- */
         .esprit-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 40px;
+            margin-bottom: 50px;
         }
-        .box { border: 1px solid #ddd; padding: 20px; min-height: 250px; display: flex; flex-direction: column; justify-content: center; background: #fff; }
+        /* Style minimaliste pour les cadres d'exemples */
+        .box { border: 1px solid #e0e0e0; padding: 50px 20px; min-height: 200px; display: flex; flex-direction: column; justify-content: center; }
         
-        .full-width-photo { width: 100%; height: auto; min-height: 400px; background: #f4f4f4; margin-top: 40px; display: flex; align-items: center; justify-content: center; }
+        .full-width-photo { width: 100%; margin-top: 50px; }
+        .full-width-photo img { width: 100%; height: auto; display: block; }
 
-        .disclaimer { font-style: italic; margin: 40px 0; color: var(--terracotta); font-size: 0.9rem; font-family: 'Playfair Display'; }
+        .disclaimer { font-style: italic; margin: 50px 0; color: var(--terracotta); font-size: 0.95rem; font-family: 'Playfair Display'; }
 
-        /* --- SECTION LISTE --- */
-        .card-donation { background-color: var(--beige-carte); padding: 60px 30px; border-radius: 2px; }
+        /* --- LISTE --- */
+        .card-donation { background-color: var(--beige-fond); padding: 80px 40px; }
         .btn-don {
             display: inline-block;
             background-color: var(--terracotta);
             color: white;
-            padding: 15px 40px;
+            padding: 18px 45px;
             text-decoration: none;
-            border-radius: 0; /* Plus rustique/chic sans arrondi */
-            margin: 25px 0;
-            transition: 0.3s;
+            margin: 30px 0;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            transition: background 0.3s;
         }
+        .btn-don:hover { background-color: var(--olive); }
 
         /* --- PRÉSENCE --- */
-        .link-form { text-decoration: none; color: var(--bleu-nuit); font-size: 1.5rem; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--bleu-nuit); padding-bottom: 5px; }
+        .link-form { text-decoration: none; color: var(--bleu-nuit); font-size: 1.4rem; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--bleu-nuit); padding-bottom: 3px; transition: opacity 0.3s; }
+        .link-form:hover { opacity: 0.6; }
 
-        footer { padding: 80px 20px; font-size: 0.7rem; letter-spacing: 1px; opacity: 0.5; text-align: center; }
+        footer { padding: 100px 20px; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.4; text-align: center; text-transform: uppercase; }
 
-        @media (max-width: 768px) { nav a { margin: 0 10px; font-size: 0.8rem; } }
+        @media (max-width: 768px) { nav a { margin: 0 8px; font-size: 0.75rem; } }
     </style>
 </head>
 <body>
 
     <nav id="navbar">
-        <a href="#accueil">accueil</a>
-        <a href="#esprit">l'esprit</a>
-        <a href="#liste">liste de mariage</a>
-        <a href="#presence">présence</a>
+        <a href="#accueil">Accueil</a>
+        <a href="#esprit">L'esprit</a>
+        <a href="#liste">Liste de mariage</a>
+        <a href="#presence">Présence</a>
     </nav>
 
     <section id="accueil">
         <h1>BENOIT & ALEXANDRA</h1>
-        <p>Notre Dolce Vita sous les oliviers</p>
+        <p>Notre mariage sous le ciel de Toscane</p>
     </section>
 
     <section id="esprit" class="section-container">
-        <div class="section-title">l'esprit du mariage</div>
-        <p style="max-width: 600px; margin: 0 auto 50px;">Un mélange de lin brut, d'oliviers séculaires et de douceur italienne.</p>
+        <div class="section-title">l'esprit</div>
+        <h3 style="font-family: 'Playfair Display'; font-weight: 400; font-style: italic; font-size: 1.8rem;">L'Esprit du Mariage</h3>
+        <p style="max-width: 600px; margin: 20px auto 60px; font-weight: 300;">Un mélange de lin brut, d'oliviers séculaires et de douceur italienne.</p>
 
         <div class="esprit-grid">
-            <div class="box"><strong>Exemple Homme</strong><br><small>Costume lin, tons naturels</small></div>
-            <div class="box" style="background-color: var(--beige-fond);"><strong>Moodboard</strong><br>Couleurs autorisées</div>
-            <div class="box"><strong>Exemple Femme</strong><br><small>Robe fluide, tons pastels / terre</small></div>
+            <div class="box"><strong>Exemple Homme</strong></div>
+            <div class="box" style="background-color: var(--beige-carte); border: none;"><strong>Moodboard</strong><br><small>Couleurs autorisées</small></div>
+            <div class="box"><strong>Exemple Femme</strong></div>
         </div>
 
         <p class="disclaimer">"Blanc autorisé uniquement pour la mariée, blanc au mariage... vous connaissez la suite !"</p>
 
         <div class="full-width-photo">
-            <img src="votre-moodboard-complet.jpg" alt="Moodboard" style="width:100%; height:auto;">
+            <img src="votre-moodboard.jpg" alt="Esprit Toscane">
         </div>
     </section>
 
     <section id="liste" class="section-container">
         <div class="section-title">liste de mariage</div>
         <div class="card-donation">
-            <h2 style="font-family: 'Cinzel'; font-weight: 400; letter-spacing: 4px;">UN PETIT GESTE</h2>
-            <p>Votre présence est le plus beau des cadeaux. Comme nous sommes déjà bien installés, nous n'avons pas de liste de mariage traditionnelle.</p>
-            <p>Si vous souhaitez nous aider à réaliser notre rêve de <strong>voyage de noces</strong> :</p>
+            <h2 style="font-family: 'Cinzel'; font-weight: 400; letter-spacing: 5px; margin-bottom: 30px;">UN PETIT GESTE</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Votre présence est le plus beau des cadeaux. Comme nous sommes déjà bien installés, nous n'avons pas de liste de mariage traditionnelle.</p>
+            <p style="margin-top: 20px;">Si vous souhaitez nous aider pour notre <strong>voyage de noces</strong> :</p>
             
             <a href="VOTRE_LIEN_CAGNOTTE" class="btn-don">Contribuer au voyage</a>
             
-            <p style="font-size: 0.8rem; margin-top: 30px; line-height: 2;">
+            <p style="font-size: 0.8rem; margin-top: 40px; line-height: 2; font-family: 'Lato'; letter-spacing: 1px;">
                 IBAN: FR76 1234 5678 9012 3456 7890 123<br>
                 Code BIC: ABCDEFGH
             </p>
@@ -147,36 +152,34 @@
 
     <section id="presence" class="section-container">
         <div class="section-title">présence</div>
-        <div style="padding: 60px 0;">
-            <p>Merci de nous confirmer votre venue avant le 30 Juin :</p>
-            <br>
+        <div style="padding: 40px 0;">
+            <p style="margin-bottom: 40px;">Merci de nous confirmer votre venue avant le 30 Juin :</p>
             <a href="VOTRE_LIEN_GOOGLE_FORM" class="link-form">Répondre au Google Form</a>
         </div>
     </section>
 
     <footer>
-        FAIT AVEC AMOUR POUR NOTRE MARIAGE • 2026
+        Benoit & Alexandra • 2026
     </footer>
 
     <script>
-        // Script pour cacher/montrer le menu au scroll
         let lastScrollTop = 0;
         const navbar = document.getElementById("navbar");
 
         window.addEventListener("scroll", function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (scrollTop < lastScrollTop) {
-                // On remonte
-                navbar.classList.add("nav-visible");
-            } else {
-                // On descend
-                navbar.classList.remove("nav-visible");
-            }
-            
-            // Toujours cacher le menu tout en haut de la page pour le look épuré
+            // Si on est tout en haut (moins de 50px du top), on montre le menu
             if (scrollTop < 50) {
-                navbar.classList.remove("nav-visible");
+                navbar.classList.remove("nav-hidden");
+            } 
+            // Si on descend, on cache le menu
+            else if (scrollTop > lastScrollTop) {
+                navbar.classList.add("nav-hidden");
+            } 
+            // Si on remonte, on montre le menu
+            else {
+                navbar.classList.remove("nav-hidden");
             }
             
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;

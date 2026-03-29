@@ -3,150 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notre Mariage | Dolce Vita</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display:ital@0;1&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <title>Benoit & Alexandra | Mariage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display:ital,wght@0,400;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
             --olive: #6b705c;
-            --beige: #f1e9db;
+            --beige-fond: #f9f6f1;
+            --beige-carte: #f1e9db;
             --terracotta: #b07d62;
-            --text: #333;
-            --white: #ffffff;
+            --bleu-nuit: #2c3e50; /* Couleur pour les traits et titres selon tes croquis */
         }
 
-        body {
-            margin: 0;
-            font-family: 'Lato', sans-serif;
-            color: var(--text);
-            background-color: var(--white);
-            line-height: 1.6;
-        }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Lato', sans-serif; color: var(--bleu-nuit); background-color: white; }
 
-        h1, h2, h3 {
-            font-family: 'Cinzel', serif;
-            font-weight: 400;
-            letter-spacing: 2px;
-        }
-
-        /* Navigation */
+        /* --- NAVIGATION --- */
         nav {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid var(--beige);
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 30px;
+            border: 1px solid var(--bleu-nuit); /* Style croquis */
+            border-radius: 2px;
             z-index: 1000;
+            display: flex;
+            gap: 20px;
         }
+        nav a { text-decoration: none; color: var(--bleu-nuit); text-transform: lowercase; font-size: 0.9rem; }
 
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: var(--olive);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
-                        url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=1920') center/cover;
+        /* --- SECTION ACCUEIL --- */
+        #accueil {
+            height: 100vh;
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), 
+                        url('votre-photo-de-prez.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
             text-align: center;
         }
+        #accueil h1 { font-family: 'Cinzel', serif; font-size: 3rem; margin: 0; }
+        #accueil p { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-top: 10px; }
 
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .hero p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; }
+        /* --- SECTIONS GÉNÉRALES --- */
+        .section-container { padding: 80px 20px; text-align: center; border-top: 2px solid var(--bleu-nuit); margin-top: 40px; }
+        .section-title { font-family: 'Cinzel', serif; margin-bottom: 40px; font-size: 1.5rem; text-transform: lowercase; }
 
-        /* Moodboard / Galerie */
-        .section { padding: 80px 20px; max-width: 1000px; margin: auto; text-align: center; }
-        
-        .moodboard {
+        /* --- SECTION ESPRIT (MOODBOARD) --- */
+        .esprit-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 40px;
+            grid-template-columns: 1.5fr 1fr 1.5fr;
+            gap: 20px;
+            max-width: 1100px;
+            margin: 20px auto;
         }
+        .box { border: 2px solid var(--bleu-nuit); padding: 40px 10px; display: flex; align-items: center; justify-content: center; min-height: 150px; }
+        .full-width-box { border: 2px solid var(--bleu-nuit); max-width: 1100px; margin: 40px auto; height: 300px; display: flex; align-items: center; justify-content: center; }
+        
+        .disclaimer { font-style: italic; margin: 30px 0; color: var(--terracotta); font-size: 0.9rem; }
 
-        .moodboard img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 2px;
-            filter: sepia(20%); /* Effet rustique */
-        }
-
-        /* Donation Page Style */
-        .donation-card {
-            background-color: var(--beige);
-            padding: 40px;
+        /* --- SECTION LISTE (UN PETIT GESTE) --- */
+        .card-donation {
+            background-color: var(--beige-carte);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 50px;
             border-radius: 5px;
-            margin-top: 30px;
         }
-
-        .btn {
+        .btn-don {
             display: inline-block;
-            padding: 15px 30px;
             background-color: var(--terracotta);
             color: white;
+            padding: 15px 30px;
             text-decoration: none;
             border-radius: 30px;
-            margin-top: 20px;
+            margin: 20px 0;
             transition: 0.3s;
         }
+        .btn-don:hover { opacity: 0.8; }
 
-        .btn:hover { background-color: var(--olive); }
+        /* --- SECTION PRÉSENCE (FORM) --- */
+        .btn-form {
+            text-decoration: underline;
+            color: var(--bleu-nuit);
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+        }
 
-        footer { padding: 40px; text-align: center; font-size: 0.8rem; color: #999; }
+        footer { padding: 60px 20px; font-size: 0.8rem; opacity: 0.6; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .esprit-grid { grid-template-columns: 1fr; }
+            #accueil h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#moodboard">L'Esprit</a>
-        <a href="#cadeaux">Liste de Mariage</a>
+        <a href="#accueil">accueil</a>
+        <a href="#esprit">esprit</a>
+        <a href="#liste">liste de mariage</a>
+        <a href="#presence">présence</a>
     </nav>
 
-    <section id="accueil" class="hero">
-        <h1>Marie & Julien</h1>
-        <p>Sous le soleil de Toscane - 12 Septembre 2026</p>
+    <section id="accueil">
+        <h1>BENOIT & ALEXANDRA</h1>
+        <p>text de présentation pour notre mariage</p>
     </section>
 
-    <section id="moodboard" class="section">
-        <h2>L'Esprit du Mariage</h2>
+    <section id="esprit" class="section-container">
+        <div class="section-title">l'esprit</div>
+        <h3>L'Esprit du Mariage</h3>
         <p>Un mélange de lin brut, d'oliviers séculaires et de douceur italienne.</p>
-        <div class="moodboard">
-            <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=500" alt="Toscane">
-            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=500" alt="Table de fête">
-            <img src="https://images.unsplash.com/photo-1520121401995-928cd50d4e27?auto=format&fit=crop&w=500" alt="Olivier">
+
+        <div class="esprit-grid">
+            <div class="box">exemple homme</div>
+            <div class="box">moodboard<br>couleur autorisé</div>
+            <div class="box">exemple femme</div>
+        </div>
+
+        <p class="disclaimer">blanc autorisé uniquement pour la marié, blanc vu mariage dans le cul</p>
+
+        <div class="full-width-box">
+            photo pour le mood board
         </div>
     </section>
 
-    <hr style="border: 0; border-top: 1px solid #eee; width: 50%;">
-
-    <section id="cadeaux" class="section">
-        <h2>Un Petit Geste</h2>
-        <div class="donation-card">
+    <section id="liste" class="section-container">
+        <div class="section-title">liste de mariage</div>
+        <div class="card-donation">
+            <h2 style="font-family: 'Cinzel'; font-weight: 400;">UN PETIT GESTE</h2>
             <p>Votre présence est le plus beau des cadeaux. Comme nous sommes déjà bien installés dans notre nid douillet, nous n'avons pas de liste de mariage traditionnelle.</p>
             <p>Si vous souhaitez toutefois nous aider à réaliser notre rêve de <strong>voyage de noces</strong>, une urne sera disponible le jour J, ou vous pouvez contribuer via le lien ci-dessous :</p>
             
-            <a href="https://votre-lien-cagnotte.com" class="btn">Contribuer à notre Voyage</a>
+            <a href="VOTRE_LIEN_CAGNOTTE" class="btn-don">Contribuer à notre Voyage</a>
             
-            <p style="margin-top: 20px; font-size: 0.9rem;">
-                <em>IBAN: FR76 1234 5678 9012 3456 7890 123<br>
-                Code BIC: ABCDEFGH</em>
+            <p style="font-size: 0.8rem; margin-top: 20px;">
+                IBAN: FR76 1234 5678 9012 3456 7890 123<br>
+                Code BIC: ABCDEFGH
             </p>
         </div>
     </section>
 
+    <section id="presence" class="section-container">
+        <div class="section-title">présence</div>
+        <div style="padding: 100px 0;">
+            <a href="VOTRE_LIEN_GOOGLE_FORM" class="btn-form">liens vers un google form</a>
+        </div>
+    </section>
+
     <footer>
-        <p>Fait avec amour pour notre mariage &bull; 2026</p>
+        Fait avec amour pour notre mariage • 2026
     </footer>
 
 </body>

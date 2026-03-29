@@ -68,5 +68,120 @@
             gap: 30px;
             margin-bottom: 40px;
         }
-        .box { border: 1px solid #ddd; padding: 20px; min-height:
+        .box { border: 1px solid #ddd; padding: 20px; min-height: 250px; display: flex; flex-direction: column; justify-content: center; background: #fff; }
         
+        .full-width-photo { width: 100%; height: auto; min-height: 400px; background: #f4f4f4; margin-top: 40px; display: flex; align-items: center; justify-content: center; }
+
+        .disclaimer { font-style: italic; margin: 40px 0; color: var(--terracotta); font-size: 0.9rem; font-family: 'Playfair Display'; }
+
+        /* --- SECTION LISTE --- */
+        .card-donation { background-color: var(--beige-carte); padding: 60px 30px; border-radius: 2px; }
+        .btn-don {
+            display: inline-block;
+            background-color: var(--terracotta);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 0; /* Plus rustique/chic sans arrondi */
+            margin: 25px 0;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        /* --- PRÉSENCE --- */
+        .link-form { text-decoration: none; color: var(--bleu-nuit); font-size: 1.5rem; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--bleu-nuit); padding-bottom: 5px; }
+
+        footer { padding: 80px 20px; font-size: 0.7rem; letter-spacing: 1px; opacity: 0.5; text-align: center; }
+
+        @media (max-width: 768px) { nav a { margin: 0 10px; font-size: 0.8rem; } }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#accueil">accueil</a>
+        <a href="#esprit">l'esprit</a>
+        <a href="#liste">liste de mariage</a>
+        <a href="#presence">présence</a>
+    </nav>
+
+    <section id="accueil">
+        <h1>BENOIT & ALEXANDRA</h1>
+        <p>Notre Dolce Vita sous les oliviers</p>
+    </section>
+
+    <section id="esprit" class="section-container">
+        <div class="section-title">l'esprit du mariage</div>
+        <p style="max-width: 600px; margin: 0 auto 50px;">Un mélange de lin brut, d'oliviers séculaires et de douceur italienne.</p>
+
+        <div class="esprit-grid">
+            <div class="box"><strong>Exemple Homme</strong><br><small>Costume lin, tons naturels</small></div>
+            <div class="box" style="background-color: var(--beige-fond);"><strong>Moodboard</strong><br>Couleurs autorisées</div>
+            <div class="box"><strong>Exemple Femme</strong><br><small>Robe fluide, tons pastels / terre</small></div>
+        </div>
+
+        <p class="disclaimer">"Blanc autorisé uniquement pour la mariée, blanc au mariage... vous connaissez la suite !"</p>
+
+        <div class="full-width-photo">
+            <img src="votre-moodboard-complet.jpg" alt="Moodboard" style="width:100%; height:auto;">
+        </div>
+    </section>
+
+    <section id="liste" class="section-container">
+        <div class="section-title">liste de mariage</div>
+        <div class="card-donation">
+            <h2 style="font-family: 'Cinzel'; font-weight: 400; letter-spacing: 4px;">UN PETIT GESTE</h2>
+            <p>Votre présence est le plus beau des cadeaux. Comme nous sommes déjà bien installés, nous n'avons pas de liste de mariage traditionnelle.</p>
+            <p>Si vous souhaitez nous aider à réaliser notre rêve de <strong>voyage de noces</strong> :</p>
+            
+            <a href="VOTRE_LIEN_CAGNOTTE" class="btn-don">Contribuer au voyage</a>
+            
+            <p style="font-size: 0.8rem; margin-top: 30px; line-height: 2;">
+                IBAN: FR76 1234 5678 9012 3456 7890 123<br>
+                Code BIC: ABCDEFGH
+            </p>
+        </div>
+    </section>
+
+    <section id="presence" class="section-container">
+        <div class="section-title">présence</div>
+        <div style="padding: 60px 0;">
+            <p>Merci de nous confirmer votre venue avant le 30 Juin :</p>
+            <br>
+            <a href="VOTRE_LIEN_GOOGLE_FORM" class="link-form">Répondre au Google Form</a>
+        </div>
+    </section>
+
+    <footer>
+        FAIT AVEC AMOUR POUR NOTRE MARIAGE • 2026
+    </footer>
+
+    <script>
+        // Script pour cacher/montrer le menu au scroll
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop < lastScrollTop) {
+                // On remonte
+                navbar.classList.add("nav-visible");
+            } else {
+                // On descend
+                navbar.classList.remove("nav-visible");
+            }
+            
+            // Toujours cacher le menu tout en haut de la page pour le look épuré
+            if (scrollTop < 50) {
+                navbar.classList.remove("nav-visible");
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+    </script>
+
+</body>
+</html>
